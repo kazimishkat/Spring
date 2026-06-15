@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface CustomerService {
-    Customer save(Customer c);
+    Customer save(Customer c,MultipartFile file);
     List<Customer> getAll();
     Optional<Customer> getById(Long id);
     void delete(Long id);}
