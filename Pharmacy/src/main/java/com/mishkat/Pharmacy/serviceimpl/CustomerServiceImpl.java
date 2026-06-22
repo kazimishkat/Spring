@@ -5,12 +5,19 @@ import com.mishkat.Pharmacy.entity.User;
 import com.mishkat.Pharmacy.repository.CustomerRepository;
 import com.mishkat.Pharmacy.repository.UserRepository;
 import com.mishkat.Pharmacy.service.CustomerService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -24,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     private String uploadDir;
 
     @Override
-    public Customer save(Customer c,MultipartFile imageFile) {
+    public Customer save(Customer c, MultipartFile imageFile) {
 
         if (imageFile != null && !imageFile.isEmpty()) {
             // Save image for both User and JobSeeker
