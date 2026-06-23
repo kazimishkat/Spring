@@ -2,11 +2,15 @@ package com.mishkat.PharmacyManagement.entity;
 
 import com.mishkat.PharmacyManagement.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Defines this class as a database entity
 @Data // Auto-generates standard boilerplate methods (Getters/Setters) via Lombok
 @Table(name = "users") // Maps this entity to the 'users' data table
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id // Declares the database Primary Key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Configures identity column auto-incrementation

@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Declares child detail row model entity mapping layer
 @Data // Lombok automated encapsulation processing injector
 @Table(name = "sale_items") // Binds object mapping context strictly inside 'sale_items' database rows
+@AllArgsConstructor
+@NoArgsConstructor
 public class SaleItem {
     @Id // Child entity unique row sequence indicator
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Key sequencing execution configuration

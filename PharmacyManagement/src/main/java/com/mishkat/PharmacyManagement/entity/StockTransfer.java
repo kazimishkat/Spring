@@ -2,7 +2,9 @@ package com.mishkat.PharmacyManagement.entity;
 
 import com.mishkat.PharmacyManagement.enums.TransferStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +13,8 @@ import java.util.List;
 @Entity // Sets database framework for managing internal point-to-point shipments
 @Data // Lombok tool automation application settings
 @Table(name = "stock_transfers") // Binds parent configurations directly inside 'stock_transfers' table
+@AllArgsConstructor
+@NoArgsConstructor
 public class StockTransfer {
     @Id // Document transaction locator key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Autonumber indexing strategy specification

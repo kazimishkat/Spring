@@ -1,13 +1,17 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity // Defines entity serialization layer
 @Data // Injects standard Lombok data constructors and structural patterns
 @Table(name = "batch_stocks") // Binds entity model to 'batch_stocks' table
+@AllArgsConstructor
+@NoArgsConstructor
 public class BatchStock {
     @Id // Identifies database reference record row primary ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatic ID numbering incrementation tracking

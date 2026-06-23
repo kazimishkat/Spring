@@ -2,7 +2,9 @@ package com.mishkat.PharmacyManagement.entity;
 
 import com.mishkat.PharmacyManagement.enums.RequisitionStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +13,8 @@ import java.util.List;
 @Entity // Instantiates the structural internal branch request framework table mapping
 @Data // Automates Java field encapsulation mechanisms via Lombok
 @Table(name = "requisitions") // Directs configuration to parent table 'requisitions'
+@AllArgsConstructor
+@NoArgsConstructor
 public class Requisition {
 
     @Id // Internal row locator assignment

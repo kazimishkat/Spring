@@ -3,7 +3,9 @@ package com.mishkat.PharmacyManagement.entity;
 import com.mishkat.PharmacyManagement.enums.PaymentMethod;
 import com.mishkat.PharmacyManagement.enums.SaleStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +14,8 @@ import java.util.List;
 @Entity // Declares main sales transaction engine mapping
 @Data // Applies standard structural patterns via Lombok encapsulation
 @Table(name = "sales") // Stores parent headers in 'sales' table
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sale {
     @Id // Master Primary ID field allocation
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Key increment strategy specification

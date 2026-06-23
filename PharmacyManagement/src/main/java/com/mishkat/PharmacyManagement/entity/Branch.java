@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Marks this Java class as a JPA database entity mapped to a table
 @Data // Lombok annotation generating getters, setters, toString, equals, and hashCode
 @Table(name = "branches") // Maps entity to the explicit database table named 'branches'
+@AllArgsConstructor
+@NoArgsConstructor
 public class Branch {
     @Id // Declares this field as the Primary Key of the table
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatically auto-increments the ID value (MySQL/PostgreSQL native auto-increment)

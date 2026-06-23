@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Declares table definition model
 @Data // Lombok variable configuration automation
 @Table(name = "customers") // Ties model to 'customers' DB structure
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
     @Id // Primary ID indicator
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Configures field generation pattern

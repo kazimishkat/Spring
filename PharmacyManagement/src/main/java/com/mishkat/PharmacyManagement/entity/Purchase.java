@@ -2,7 +2,9 @@ package com.mishkat.PharmacyManagement.entity;
 
 import com.mishkat.PharmacyManagement.enums.PurchaseStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +13,8 @@ import java.util.List;
 @Entity // Setup mapping for external procurement order tracker
 @Data // Automated structural code generator deployment via Lombok
 @Table(name = "purchases") // Assigns parent header info block to 'purchases' table database location
+@AllArgsConstructor
+@NoArgsConstructor
 public class Purchase {
     @Id // Standard identifier attribute tag setting
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Primary row sequence auto tracking configuration

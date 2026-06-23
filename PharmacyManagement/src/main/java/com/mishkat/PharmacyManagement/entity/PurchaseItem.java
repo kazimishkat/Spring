@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Set detail line item definition attributes mapping
 @Data // Injects standard element access mechanisms via Lombok
 @Table(name = "purchase_items") // Binds entity schema inside 'purchase_items' table data framework
+@AllArgsConstructor
+@NoArgsConstructor
 public class PurchaseItem {
     @Id // Individual details primary tracking key assignment
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automated identity sequence driver processing

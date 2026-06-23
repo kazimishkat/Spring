@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Identifies standard persistence entity framework class
 @Data // Implements component getter/setter boilerplate
 @Table(name = "medicines") // Maps class structures to 'medicines' data table
+@AllArgsConstructor
+@NoArgsConstructor
 public class Medicine {
     @Id // Database internal row index identification
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Identity column mapping

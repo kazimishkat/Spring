@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Defines database mapping capability
 @Data // Generates utility code boilerplate via Lombok
 @Table(name = "manufacturers") // Sets table mapping name
+@AllArgsConstructor
+@NoArgsConstructor
 public class Manufacturer {
     @Id // Primary Key mapping
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generation auto-increment framework

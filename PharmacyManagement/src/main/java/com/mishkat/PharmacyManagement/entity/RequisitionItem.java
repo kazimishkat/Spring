@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Detail tracking sub table mapping representation layer
 @Data // Automated structural code patterns by Lombok
 @Table(name = "requisition_items") // Binds schema directly to child detail logging table 'requisition_items'
+@AllArgsConstructor
+@NoArgsConstructor
 public class RequisitionItem {
     @Id // Detail record surrogate identifier tracking key index
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Automated driver generation handling

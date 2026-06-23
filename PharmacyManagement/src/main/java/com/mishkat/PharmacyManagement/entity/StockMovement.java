@@ -2,13 +2,17 @@ package com.mishkat.PharmacyManagement.entity;
 
 import com.mishkat.PharmacyManagement.enums.StockMovementType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity // Establishes a read-only immutable core audit log ledger tracking all inventory changes
 @Data // Standard Lombok utility integration tool configuration
 @Table(name = "stock_movements") // Maps schema definition into central inventory ledger table 'stock_movements'
+@AllArgsConstructor
+@NoArgsConstructor
 public class StockMovement {
     @Id // Audit event transaction locator unique identification id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Incremental security numbering framework execution sequence

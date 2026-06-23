@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Establishes entity object context
 @Data // Sets standard access rules methods
 @Table(name = "generics") // Links object to 'generics' DB table
+@AllArgsConstructor
+@NoArgsConstructor
 public class Generic {
     @Id // Identity attribute configuration
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Database native indexing strategy

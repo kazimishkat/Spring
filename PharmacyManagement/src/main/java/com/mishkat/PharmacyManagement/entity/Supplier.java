@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Marks this as a JPA persistence table entity
 @Data // Automates encapsulation patterns via Lombok
 @Table(name = "suppliers") // Configures database destination table
+@AllArgsConstructor
+@NoArgsConstructor
 public class Supplier {
 
     @Id // Primary Key marker

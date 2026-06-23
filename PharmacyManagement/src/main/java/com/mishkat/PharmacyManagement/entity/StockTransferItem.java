@@ -1,11 +1,15 @@
 package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Child table detailing content items inside transit manifests
 @Data // Auto-builds necessary access mechanisms via Lombok attributes
 @Table(name = "stock_transfer_items") // Houses asset entries inside 'stock_transfer_items' data container
+@AllArgsConstructor
+@NoArgsConstructor
 public class StockTransferItem {
     @Id // Sub record sequence tracker identification index key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Setup generation execution sequence context
