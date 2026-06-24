@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity // Defines this class as a database entity
 @Data // Auto-generates standard boilerplate methods (Getters/Setters) via Lombok
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 })
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class User extends BaseEntity{
     @Column(nullable = false, length = 50)
     private String username;

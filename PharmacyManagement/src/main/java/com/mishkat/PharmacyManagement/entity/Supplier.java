@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Entity // Marks this as a JPA persistence table entity
 @Data // Automates encapsulation patterns via Lombok
 @Table(name = "suppliers") // Configures database destination table
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class Supplier extends BaseEntity{
 
     @Column(name = "supplier_code", nullable = false, unique = true, length = 20)

@@ -1,5 +1,6 @@
 package com.mishkat.PharmacyManagement.entity;
-import com.mishkat.PharmacyManagement.enums.DiscountType;
+
+import com.mishkat.PharmacyManagement.enums.ReturnReason;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,16 +15,15 @@ import lombok.experimental.SuperBuilder;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "sales_invoice_items")
+@Table(name = "purchase_return_items")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-
-public class SalesInvoiceItem extends BaseEntity{
+public class PurchaseReturnItem extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "invoice_id", nullable = false)
-    private SalesInvoice invoice;
+    @JoinColumn(name = "purchase_return_id", nullable = false)
+    private PurchaseReturn purchaseReturn;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "batch_id", nullable = false)
@@ -32,16 +32,10 @@ public class SalesInvoiceItem extends BaseEntity{
     @Column(nullable = false)
     private Integer quantity;
 
-    @Column(name = "unit_price", precision = 12, scale = 2)
-    private BigDecimal unitPrice;
-
     @Enumerated(EnumType.STRING)
-    @Column(name = "discount_type", length = 20)
-    private DiscountType discountType;
+    @Column(length = 30)
+    private ReturnReason reason;
 
-    @Column(name = "discount_value", precision = 12, scale = 2)
-    private BigDecimal discountValue;
-
-    @Column(name = "line_total", precision = 12, scale = 2)
-    private BigDecimal lineTotal;
+    @Column(name = "credit_amount", precision = 12, scale = 2)
+    private BigDecimal creditAmount;
 }

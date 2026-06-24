@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -15,7 +16,7 @@ import java.util.Date;
 @Table(name = "stock_movements") // Maps schema definition into central inventory ledger table 'stock_movements'
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class StockMovement extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "branch_id", nullable = false)

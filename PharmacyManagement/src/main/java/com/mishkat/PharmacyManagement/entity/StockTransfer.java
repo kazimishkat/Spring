@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 @Table(name = "stock_transfers") // Binds parent configurations directly inside 'stock_transfers' table
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class StockTransfer extends  BaseEntity{
     @Column(name = "transfer_number", nullable = false, unique = true, length = 30)
     private String transferNumber;

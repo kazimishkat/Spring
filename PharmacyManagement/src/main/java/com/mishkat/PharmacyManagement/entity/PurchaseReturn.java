@@ -1,4 +1,5 @@
 package com.mishkat.PharmacyManagement.entity;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,29 +15,29 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Central Hub returning stock back to a Supplier (e.g. damaged/expired on arrival). */
 @Entity
-@Table(name = "sales_returns")
+@Table(name = "purchase_returns")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class SalesReturn extends BaseEntity{
-
+public class PurchaseReturn extends BaseEntity{
     @Column(name = "return_number", nullable = false, unique = true, length = 30)
     private String returnNumber;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "invoice_id", nullable = false)
-    private SalesInvoice invoice;
+    @JoinColumn(name = "supplier_id", nullable = false)
+    private Supplier supplier;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "branch_id", nullable = false)
+    private Branch branch;
 
     @Column(name = "return_date", nullable = false)
     private LocalDate returnDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "processed_by")
-    private User processedBy;
-
-    @OneToMany(mappedBy = "salesReturn", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "purchaseReturn", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<SalesReturnItem> items = new ArrayList<>();
+    private List<PurchaseReturnItem> items = new ArrayList<>();
 }
