@@ -3,9 +3,11 @@ package com.mishkat.PharmacyManagement.entity;
 import com.mishkat.PharmacyManagement.enums.StockMovementType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity // Establishes a read-only immutable core audit log ledger tracking all inventory changes
@@ -13,30 +15,31 @@ import java.util.Date;
 @Table(name = "stock_movements") // Maps schema definition into central inventory ledger table 'stock_movements'
 @AllArgsConstructor
 @NoArgsConstructor
-public class StockMovement {
-    @Id // Audit event transaction locator unique identification id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Incremental security numbering framework execution sequence
-    private Long id; // Unique event record sequence identifier tracking index key
+@Builder
+public class StockMovement extends BaseEntity{
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "branch_id", nullable = false)
+    private Branch branch;
 
-    @ManyToOne // A single physical branch maps thousands of individual inventory event changes onto this ledger (Many-To-One)
-    @JoinColumn(name = "branch_id", nullable = false) // Foreign key pinpointing exactly where this inventory event took place
-    private Branch branch; // The operational branch site where this physical stock balance change occurred
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "batch_id", nullable = false)
+    private MedicineBatch batch;
 
-    @ManyToOne // The exact same catalog medicine is referenced across thousands of movement events across the company (Many-To-One)
-    @JoinColumn(name = "medicine_id", nullable = false) // Foreign key identifying exactly which item's stock level changed
-    private Medicine medicine; // The target catalog item asset affected by this physical stock movement event
+    @Enumerated(EnumType.STRING)
+    @Column(name = "movement_type", nullable = false, length = 30)
+    private StockMovementType movementType;
 
-    private String batchNo; // The exact production batch lot code adjusted during this movement event (crucial for tracking expirations)
+    @Column(nullable = false)
+    private Integer quantity;
 
-    @Enumerated(EnumType.STRING) // Saves transaction types clearly as text values inside the database engine
-    @Column(nullable = false) // Transaction classification must be strictly defined for reporting compliance
-    private StockMovementType movementType; // Audit log classification tag defining the reason behind this stock level change
+    @Column(name = "reference_type", length = 50)
+    private String referenceType;
 
-    @Column(nullable = false) // Balance change volume values cannot be omitted or set to null
-    private Integer quantity; // The signed variance delta quantity count (+50 for incoming purchases, -10 for outgoing sales)
+    @Column(name = "reference_id")
+    private Long referenceId;
 
-    @Temporal(TemporalType.TIMESTAMP) // Capture absolute date and precision execution clock timing
-    private Date movementDate = new Date(); // The exact real-time moment when this inventory balance change hit the system
+    @Column(name = "movement_date", nullable = false)
+    private LocalDateTime movementDate;
 
-    private String referenceNo; // Cross-reference invoice number or document id linking back to the source transaction (e.g., matching InvoiceNo, PONumber, TransferNo)
+    private String remarks;
 }

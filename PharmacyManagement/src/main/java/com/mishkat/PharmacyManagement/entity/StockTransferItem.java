@@ -2,6 +2,7 @@ package com.mishkat.PharmacyManagement.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,19 +11,19 @@ import lombok.NoArgsConstructor;
 @Table(name = "stock_transfer_items") // Houses asset entries inside 'stock_transfer_items' data container
 @AllArgsConstructor
 @NoArgsConstructor
-public class StockTransferItem {
-    @Id // Sub record sequence tracker identification index key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Setup generation execution sequence context
-    private Long id; // Secondary surrogate locator code reference tracking row key
+@Builder
+public class StockTransferItem extends  BaseEntity{
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "stock_transfer_id", nullable = false)
+    private StockTransfer stockTransfer;
 
-    @ManyToOne // Many cargo manifest lines belong together under one unique master transit manifest tracking sheet (Many-To-One)
-    @JoinColumn(name = "stock_transfer_id", nullable = false) // Links explicitly down to parent document record identity number
-    private StockTransfer stockTransfer; // Direct relationship link back up to parent shipping document structure mapping
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "batch_id", nullable = false)
+    private MedicineBatch batch;
 
-    @ManyToOne // Multiple distinct branch transfers can move the same catalog item around the company network (Many-To-One)
-    @JoinColumn(name = "medicine_id", nullable = false) // Mandatory reference identifier linking catalog asset details to this row
-    private Medicine medicine; // The explicit medicine item classification being shipped between branch stores
+    @Column(name = "sent_quantity", nullable = false)
+    private Integer sentQuantity;
 
-    private String batchNo; // Exact manufacturer batch lot code assignment indicating which specific physical cases are in transit
-    private Integer quantity; // Exact volume item count representing the total inventory transferred on this manifest line
+    @Column(name = "received_quantity")
+    private Integer receivedQuantity;
 }

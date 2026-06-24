@@ -3,9 +3,11 @@ package com.mishkat.PharmacyManagement.entity;
 import com.mishkat.PharmacyManagement.enums.TransferStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,28 +17,39 @@ import java.util.List;
 @Table(name = "stock_transfers") // Binds parent configurations directly inside 'stock_transfers' table
 @AllArgsConstructor
 @NoArgsConstructor
-public class StockTransfer {
-    @Id // Document transaction locator key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Autonumber indexing strategy specification
-    private Long id; // Internal sequence reference row index number
+@Builder
+public class StockTransfer extends  BaseEntity{
+    @Column(name = "transfer_number", nullable = false, unique = true, length = 30)
+    private String transferNumber;
 
-    @Column(unique = true, nullable = false) // Manifest reference codes must be entirely unique for asset protection mapping
-    private String transferNo; // Shipping manifest serial reference track string identifier (e.g., "TR-BR01-BR05-4412")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "requisition_id")
+    private Requisition requisition;
 
-    @ManyToOne // A branch location acts as the shipment origin for many independent stock transfers (Many-To-One)
-    @JoinColumn(name = "from_branch_id", nullable = false) // Creates foreign key tracking mapping tracing back to source origin branch
-    private Branch fromBranch; // The source shipping branch location transferring inventory away from its local shelves
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "from_branch_id", nullable = false)
+    private Branch fromBranch;
 
-    @ManyToOne // A branch location can act as the target recipient for many independent stock transfers (Many-To-One)
-    @JoinColumn(name = "to_branch_id", nullable = false) // Creates foreign key tracking mapping tracing to receiving branch
-    private Branch toBranch; // The target destination location receiving incoming transferred inventory onto its local shelves
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "to_branch_id", nullable = false)
+    private Branch toBranch;
 
-    @Temporal(TemporalType.TIMESTAMP) // Tracks accurate logistics scheduling metadata timeline metrics
-    private Date transferDate = new Date(); // The exact execution moment when this transit manifest document initialized
+    @Column(name = "transfer_date", nullable = false)
+    private LocalDate transferDate;
 
-    @Enumerated(EnumType.STRING) // Saves state values clearly inside database rows as string values
-    private TransferStatus status; // Current logistical routing pipeline state tracking this shipment's progress
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
+    private TransferStatus status;
 
-    @OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = true) // One-To-Many structural alignment mapping individual product lines on this shipment. Cascade operations manage child record lifecycles directly.
-    private List<StockTransferItem> items = new ArrayList<>(); // Collective breakdown list detailing all physical inventory components inside this transit container
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dispatched_by")
+    private User dispatchedBy;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "received_by")
+    private User receivedBy;
+
+    @OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<StockTransferItem> items = new ArrayList<>();
 }
