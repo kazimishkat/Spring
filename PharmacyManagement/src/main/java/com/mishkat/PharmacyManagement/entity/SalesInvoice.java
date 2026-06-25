@@ -23,8 +23,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class SalesInvoice extends BaseEntity{
+
     @Column(name = "invoice_number", nullable = false, unique = true, length = 30)
     private String invoiceNumber;
 
@@ -70,10 +70,8 @@ public class SalesInvoice extends BaseEntity{
     private InvoiceStatus status;
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<SalesInvoiceItem> items = new ArrayList<>();
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<Payment> payments = new ArrayList<>();
 }

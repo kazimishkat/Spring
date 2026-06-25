@@ -18,7 +18,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class BranchInventory extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "branch_id", nullable = false)
@@ -29,10 +28,8 @@ public class BranchInventory extends BaseEntity{
     private MedicineBatch batch;
 
     @Column(name = "quantity_on_hand", nullable = false)
-    @Builder.Default
     private Integer quantityOnHand = 0;
 
     @Column(name = "quantity_reserved", nullable = false)
-    @Builder.Default
     private Integer quantityReserved = 0;
 }

@@ -21,7 +21,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class PurchaseReturn extends BaseEntity{
     @Column(name = "return_number", nullable = false, unique = true, length = 30)
     private String returnNumber;
@@ -38,6 +37,5 @@ public class PurchaseReturn extends BaseEntity{
     private LocalDate returnDate;
 
     @OneToMany(mappedBy = "purchaseReturn", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<PurchaseReturnItem> items = new ArrayList<>();
 }

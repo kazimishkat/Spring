@@ -19,7 +19,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class SalesReturn extends BaseEntity{
 
     @Column(name = "return_number", nullable = false, unique = true, length = 30)
@@ -37,6 +36,5 @@ public class SalesReturn extends BaseEntity{
     private User processedBy;
 
     @OneToMany(mappedBy = "salesReturn", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<SalesReturnItem> items = new ArrayList<>();
 }

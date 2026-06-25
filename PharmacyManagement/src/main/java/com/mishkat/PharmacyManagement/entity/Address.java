@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class Address {
     private String addressLine1;
     private String addressLine2;

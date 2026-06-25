@@ -12,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "stock_transfer_items") // Houses asset entries inside 'stock_transfer_items' data container
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 public class StockTransferItem extends  BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "stock_transfer_id", nullable = false)

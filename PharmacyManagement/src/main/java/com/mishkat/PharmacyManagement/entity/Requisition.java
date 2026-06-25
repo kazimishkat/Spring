@@ -25,7 +25,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class Requisition extends BaseEntity{
     @Column(name = "requisition_number", nullable = false, unique = true, length = 30)
     private String requisitionNumber;
@@ -57,6 +56,5 @@ public class Requisition extends BaseEntity{
     private String remarks;
 
     @OneToMany(mappedBy = "requisition", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<RequisitionItem> items = new ArrayList<>();
 }

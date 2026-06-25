@@ -21,7 +21,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class StockAdjustment extends BaseEntity{
     @Column(name = "adjustment_number", nullable = false, unique = true, length = 30)
     private String adjustmentNumber;
@@ -38,6 +37,5 @@ public class StockAdjustment extends BaseEntity{
     private User approvedBy;
 
     @OneToMany(mappedBy = "stockAdjustment", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<StockAdjustmentItem> items = new ArrayList<>();
 }

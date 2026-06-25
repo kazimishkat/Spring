@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 })
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class User extends BaseEntity{
     @Column(nullable = false, length = 50)
     private String username;
@@ -40,7 +39,6 @@ public class User extends BaseEntity{
     @JoinColumn(name = "branch_id")
     private Branch branch;
 
-    @Builder.Default
     @Column(nullable = false)
     private Boolean enabled = true;
 }

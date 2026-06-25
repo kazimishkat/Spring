@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class PurchaseOrderItem extends  BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "purchase_order_id", nullable = false)
@@ -30,7 +29,6 @@ public class PurchaseOrderItem extends  BaseEntity{
     private Integer orderedQuantity;
 
     @Column(name = "received_quantity", nullable = false)
-    @Builder.Default
     private Integer receivedQuantity = 0;
 
     @Column(name = "unit_price", precision = 12, scale = 2)

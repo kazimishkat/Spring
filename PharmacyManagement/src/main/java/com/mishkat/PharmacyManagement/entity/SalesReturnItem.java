@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class SalesReturnItem extends  BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "sales_return_id", nullable = false)

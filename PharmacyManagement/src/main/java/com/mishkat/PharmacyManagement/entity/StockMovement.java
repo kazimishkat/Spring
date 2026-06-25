@@ -16,7 +16,6 @@ import java.util.Date;
 @Table(name = "stock_movements") // Maps schema definition into central inventory ledger table 'stock_movements'
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 public class StockMovement extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "branch_id", nullable = false)

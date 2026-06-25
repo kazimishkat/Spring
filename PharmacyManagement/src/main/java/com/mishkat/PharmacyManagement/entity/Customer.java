@@ -15,7 +15,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class Customer extends BaseEntity{
     @Column(length = 100)
     private String name;
@@ -34,6 +33,5 @@ public class Customer extends BaseEntity{
     private Address address;
 
     @Column(name = "loyalty_points", nullable = false)
-    @Builder.Default
     private Integer loyaltyPoints = 0;
 }

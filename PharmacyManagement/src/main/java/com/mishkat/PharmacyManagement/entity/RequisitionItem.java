@@ -14,7 +14,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class RequisitionItem extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "requisition_id", nullable = false)
@@ -31,6 +30,5 @@ public class RequisitionItem extends BaseEntity{
     private Integer approvedQuantity;
 
     @Column(name = "fulfilled_quantity", nullable = false)
-    @Builder.Default
     private Integer fulfilledQuantity = 0;
 }

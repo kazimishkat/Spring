@@ -18,7 +18,6 @@ import java.util.List;
 @Table(name = "stock_transfers") // Binds parent configurations directly inside 'stock_transfers' table
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 public class StockTransfer extends  BaseEntity{
     @Column(name = "transfer_number", nullable = false, unique = true, length = 30)
     private String transferNumber;
@@ -51,6 +50,5 @@ public class StockTransfer extends  BaseEntity{
     private User receivedBy;
 
     @OneToMany(mappedBy = "stockTransfer", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<StockTransferItem> items = new ArrayList<>();
 }

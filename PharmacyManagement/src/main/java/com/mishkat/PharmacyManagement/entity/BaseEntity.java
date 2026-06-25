@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@SuperBuilder
 @MappedSuperclass
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -36,7 +36,8 @@ public class BaseEntity {
     @Column(name = "updated_by", length = 100)
     private String updatedBy;
 
-    @Builder.Default
+
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
+
 }

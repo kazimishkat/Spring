@@ -24,7 +24,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class GoodsReceivedNote extends BaseEntity{
     @Column(name = "grn_number", nullable = false, unique = true, length = 30)
     private String grnNumber;
@@ -45,6 +44,5 @@ public class GoodsReceivedNote extends BaseEntity{
     private ApprovalStatus approvalStatus;
 
     @OneToMany(mappedBy = "grn", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default
     private List<GoodsReceivedNoteItem> items = new ArrayList<>();
 }

@@ -16,7 +16,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class Branch extends BaseEntity{
     @Column(name = "branch_code", nullable = false, unique = true, length = 20)
     private String branchCode;

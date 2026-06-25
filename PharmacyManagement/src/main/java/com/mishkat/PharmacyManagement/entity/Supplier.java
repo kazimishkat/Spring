@@ -12,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "suppliers") // Configures database destination table
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 public class Supplier extends BaseEntity{
 
     @Column(name = "supplier_code", nullable = false, unique = true, length = 20)

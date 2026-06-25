@@ -23,7 +23,6 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class Medicine extends BaseEntity{
     @Column(name = "medicine_code", nullable = false, unique = true, length = 30)
     private String medicineCode;

@@ -19,7 +19,6 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class GenericMedicine extends BaseEntity{
     @Column(name = "generic_name", nullable = false, unique = true, length = 150)
     private String genericName;
@@ -41,6 +40,5 @@ public class GenericMedicine extends BaseEntity{
     private String contraindications;
 
     @OneToMany(mappedBy = "genericMedicine")
-    @Builder.Default
     private Set<Medicine> medicines = new HashSet<>();
 }

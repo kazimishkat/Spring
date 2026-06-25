@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+
 
 public class SalesInvoiceItem extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

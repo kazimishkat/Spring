@@ -12,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class MedicineCategory extends BaseEntity{
     @Column(nullable = false, unique = true, length = 100)
     private String name;
