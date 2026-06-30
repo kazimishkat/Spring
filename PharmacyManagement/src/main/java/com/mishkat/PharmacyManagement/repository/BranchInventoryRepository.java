@@ -16,4 +16,6 @@ public interface BranchInventoryRepository extends JpaRepository<BranchInventory
     // Get total stock of a specific medicine across all batches in a specific branch
     @Query("SELECT SUM(bi.quantityOnHand) FROM BranchInventory bi WHERE bi.branch.id = :branchId AND bi.batch.medicine.id = :medicineId")
     Integer getTotalQuantityByBranchAndMedicine(@Param("branchId") Long branchId, @Param("medicineId") Long medicineId);
+
+    Long branchId(Long branchId);
 }
