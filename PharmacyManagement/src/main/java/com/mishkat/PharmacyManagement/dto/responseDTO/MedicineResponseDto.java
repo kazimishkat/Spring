@@ -27,4 +27,5 @@ public class MedicineResponseDto {
     private BigDecimal defaultPurchasePrice;
     private BigDecimal defaultSellingPrice;
     private Boolean isActive;
+    private String image;
 }

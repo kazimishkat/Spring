@@ -24,6 +24,7 @@ public class MedicineMapper {
         dto.setDefaultPurchasePrice(medicine.getDefaultPurchasePrice());
         dto.setDefaultSellingPrice(medicine.getDefaultSellingPrice());
         dto.setIsActive(medicine.getIsActive());
+        dto.setImage(medicine.getImage());
 
         if (medicine.getGenericMedicine() != null) {
             dto.setGenericMedicineId(medicine.getGenericMedicine().getId());

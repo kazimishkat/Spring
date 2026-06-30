@@ -77,4 +77,6 @@ public class Medicine extends BaseEntity{
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    private String image;
+
 }
