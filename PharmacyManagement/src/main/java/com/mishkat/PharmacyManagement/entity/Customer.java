@@ -19,8 +19,10 @@ public class Customer extends BaseEntity{
     @Column(length = 100)
     private String name;
 
+    @Column(unique = true)
     private String phone;
 
+    @Column(unique = true)
     private String email;
 
     @Enumerated(EnumType.STRING)
