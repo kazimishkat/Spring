@@ -37,6 +37,10 @@ public class Prescription extends BaseEntity{
     @Column(name = "scanned_copy")
     private byte[] scannedCopy;
 
+    // 🟢 নতুন যোগ করা হলো: ফাইলের ধরন (যেমন: image/jpeg বা application/pdf)
+    @Column(name = "file_type", length = 100)
+    private String fileType;
+
     @Column(columnDefinition = "TEXT")
     private String remarks;
 }
